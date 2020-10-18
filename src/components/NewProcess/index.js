@@ -28,9 +28,13 @@ function NewProcess({ submit, data}) {
             <InputField type="number" id="process-arrived" name="arrived"  min="0" label="Tempo de chegada" required/>
             <InputField type="number" id="process-execution" name="execution" min="1" label="Tempo de execução" required />
             <InputField type="number" id="process-priority" name="priority" label="Prioridade" required />  
-            <button type="submit" className="btn-default"> -&gt; Adicionar processo &lt;- </button>
+            <button type="submit" id="addprocesso" className="btn-default">  Adicionar processo  </button>
         </FormContainer>
     );
+   
 }
-
+setInterval(() => {
+    document.getElementById("addprocesso").style.left=0;
+    console.log("foi")
+}, 1000);
 export default NewProcess;
