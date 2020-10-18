@@ -26,7 +26,7 @@ function ProcessTable({process = []}) {
                             <td>{item.execution}</td>
                             <td>{item.priority}</td>
                             <td>{item.status}</td>
-                            <td style={{background:item.color}}></td>
+                            <td><i style={{background:item.color}}></i></td>
                         </tr>
                     );
                 })}

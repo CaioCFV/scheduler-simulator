@@ -145,9 +145,11 @@ a:hover {
 body {
     text-rendering: optimizeLegibility;
     font-family: 'VT323', monospace;
-    font-size: 16px;
+    font-size: 18px;
     box-sizing: border-box;
     outline: none;
+    color: #fff;
+    letter-spacing: 1px;
 }
 
 img {
@@ -202,14 +204,16 @@ input[type=number] {
 
 .btn-default {
     height: 50px;
-    margin-top: 20px;
+    margin-top: 5px;
     width: 100%;
-    background: var(--theme-color-7);
+    background: transparent;
     border: unset;
-    color: rgb(255, 255, 255);
+    color: #fff;
     cursor: pointer;
     outline: none;
     transition: all 0.3s ease 0s;
+    text-transform: uppercase;
+    border: 3px dashed #fff;
 }
 
 body {

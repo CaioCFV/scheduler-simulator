@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ProcessTable, NewProcess, SetTime, Graph1}  from '../../components';
 import  _  from  "lodash";
 
+import { ContainerProcess } from './style';
+
 function init(data,setData){
     let clone = _.cloneDeep(data);
     clone.totalExecutionTime = 0;

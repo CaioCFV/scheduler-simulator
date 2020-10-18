@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ProcessTable, NewProcess, SetTime, Graph1}  from '../../components';
 import  _  from  "lodash";
+import { ContainerProcess } from './style';
 
 function init(data,setData){
     let clone = _.cloneDeep(data);
@@ -96,11 +97,12 @@ function Sjf() {
     return ( 
       <>
         <h1>PRIORIDADE - NÃO PREEMPTIVO</h1>
-        <div className="max-container">
+        <ContainerProcess  className="max-container">
             <ProcessTable process={data.process} />
-        </div>
+            <NewProcess submit={setData} data={data}/>
+        </ContainerProcess>
+
         
-        <NewProcess submit={setData} data={data}/>
         <hr />
         <SetTime />
         <hr />
