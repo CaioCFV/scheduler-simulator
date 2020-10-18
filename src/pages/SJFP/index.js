@@ -2,33 +2,56 @@ import React, { useState, useEffect } from 'react';
 import { ProcessTable, NewProcess, SetTime, Graph1}  from '../../components';
 import  _  from  "lodash";
 
-
-function enqueue(data,setData){
+function init(data,setData){
     let clone = _.cloneDeep(data);
     clone.totalExecutionTime = 0;
-
     clone.process.map((item)=>{
         clone.totalExecutionTime += item.execution
     });
+    setData(clone)
+}
+
+function next(data,setData){
+    let clone = _.cloneDeep(data);
+    clone.time = clone.time + 1;
+
+    let nextProcess = clone.process.filter((item)=>{
+        return item.arrived == clone.time;
+    });
+    
+    nextProcess.map(item=>clone.queue.push(_.cloneDeep(item)))
+    
+    preemptive(clone,setData);
+}
+
+function preemptive(data,setData){
+    let clone = _.cloneDeep(data);
 
     clone.queue.sort((a,b)=>{
-        if(a.execution < b.execution && a.arrived < b.arrived){
+        if(a.execution < b.execution){
             return -1;
         }
-        if(a.execution > b.execution && a.arrived > b.arrived){
+        if(a.execution > b.execution){
             return 1;
         }
         return 0;
     });
 
-    setData(clone);
-
+    processQueue(clone,setData);
+}
+function enqueue(data,setData){
+    let clone = _.cloneDeep(data);
+    clone.totalExecutionTime = 0;
+    clone.process.map((item)=>{
+        clone.totalExecutionTime += item.execution
+    });
+   
 }
 
-function processQueue(data,setData){    
+function processQueue(data,setData){
     let clone = _.cloneDeep(data);
     if(!clone.queue.length){
-        return console.log('Todos os procesos foram escalonados');
+        return setData(clone);
     }
     if(!clone.queue[0].execution - 1){
         clone.queue[0].execution = clone.queue[0].execution - 1;
@@ -49,14 +72,9 @@ function processQueue(data,setData){
 
 function Sjf() {
     const [data,setData] = useState({
-        process:[
-            {id: 1,status: "false", name: "1", arrived: 2, execution: 3, priority: "4",status:'FALSE',color:'rgb(155, 220, 4)'},
-            {id: 2,status: "false", name: "5", arrived: 6, execution: 7, priority: "8",status:'FALSE',color:'rgb(4, 51, 220)'},
-            {id: 3,status: "false", name: "9", arrived: 10, execution: 11, priority: "12",status:'FALSE',color:'rgb(220, 4, 195)'},
-            {id: 4,status: "false", name: "9", arrived: 0, execution: 11, priority: "12",status:'FALSE',color:'rgb(220, 58, 4)'}
-        ],
+        process:[],
         queue:[],
-        time:1,
+        time:-1,
         steps:[],
         totalExecutionTime: 0
     });
@@ -66,7 +84,7 @@ function Sjf() {
     },[data])
 
     const handleIniciar =  () =>{
-        enqueue(data,setData);
+        init(data,setData);
     }
 
     // const handleResult = () => {
@@ -74,11 +92,7 @@ function Sjf() {
     // }
 
     const handleNext = () => {
-        enqueue(data,setData);
-        setTimeout(function(){
-            processQueue(data,setData);
-        },1000)
-     
+        next(data,setData)
     }
 
     return ( 

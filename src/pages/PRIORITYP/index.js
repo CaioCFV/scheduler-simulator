@@ -21,7 +21,31 @@ function next(data,setData){
     
     nextProcess.map(item=>clone.queue.push(_.cloneDeep(item)))
     
-   processQueue(clone,setData);
+    preemptive(clone,setData);
+}
+
+function preemptive(data,setData){
+    let clone = _.cloneDeep(data);
+
+    clone.queue.sort((a,b)=>{
+        if(a.priority < b.priority){
+            return -1;
+        }
+        if(a.priority > b.priority){
+            return 1;
+        }
+        return 0;
+    });
+
+    processQueue(clone,setData);
+}
+function enqueue(data,setData){
+    let clone = _.cloneDeep(data);
+    clone.totalExecutionTime = 0;
+    clone.process.map((item)=>{
+        clone.totalExecutionTime += item.execution
+    });
+   
 }
 
 function processQueue(data,setData){
@@ -79,8 +103,11 @@ function Sjf() {
 
     return ( 
       <>
-        <h1>First coming first served - FCFS</h1>
-        <ProcessTable process={data.process} />
+        <h1>STF - PREEMPTIVO</h1>
+        <div className="max-container">
+            <ProcessTable process={data.process} />
+        </div>
+        
         <hr />
         <NewProcess submit={setData} data={data}/>
         <hr />

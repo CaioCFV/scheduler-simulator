@@ -1,8 +1,10 @@
 import React from 'react';
+import  { Table } from './style';
+
 function ProcessTable({process = []}) {
     return ( 
       <>
-        <table>
+        <Table>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -29,7 +31,7 @@ function ProcessTable({process = []}) {
                     );
                 })}
             </tbody>
-        </table>
+        </Table>
       </>
     );
 }

@@ -55,16 +55,17 @@ function processQueue(data,setData){
 function RoundRobin() {
     const [data,setData] = useState({
         process:[
-            {id: 1,status: "false", name: "1", arrived: 2, execution: 3, priority: 4,status:'FALSE',color:'rgb(155, 220, 4)',roundRobinTime:4},
-            {id: 2,status: "false", name: "5", arrived: 6, execution: 7, priority: 8,status:'FALSE',color:'rgb(4, 51, 220)',roundRobinTime:4},
-            {id: 3,status: "false", name: "9", arrived: 10, execution: 11, priority: 12,status:'FALSE',color:'rgb(220, 4, 195)',roundRobinTime:4},
-            {id: 4,status: "false", name: "9", arrived: 0, execution: 11, priority: 0,status:'FALSE',color:'rgb(220, 58, 4)',roundRobinTime:4}
+            {id: 1,status: "false", name: "P1", arrived: 0, execution: 4, priority: 1,color:'rgb(155, 220, 4)', roundRobinTime:3},
+            {id: 2,status: "false", name: "P2", arrived: 1, execution: 7, priority: 3,color:'rgb(4, 51, 220)', roundRobinTime:3},
+            {id: 3,status: "false", name: "P3", arrived: 2, execution: 5, priority: 0,color:'rgb(220, 4, 195)', roundRobinTime:3},
+            {id: 4,status: "false", name: "P4", arrived: 3, execution: 5, priority: 1,color:'rgb(220, 58, 4)', roundRobinTime:3},
+            {id: 5,status: "false", name: "P5", arrived: 5, execution: 2, priority: -1,color:'rgb(220, 220, 4)', roundRobinTime:3}
         ],
         queue:[],
         time:1,
         steps:[],
         totalExecutionTime: 0,
-        roundRobinTime:4
+        roundRobinTime:3
     });
 
     useEffect(()=>{

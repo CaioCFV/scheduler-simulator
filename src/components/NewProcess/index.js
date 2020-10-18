@@ -1,5 +1,7 @@
 import React from 'react';
 import  _  from  "lodash"
+import { InputField } from '../';
+import { FormContainer } from './style';
 
 function NewProcess({ submit, data}) {
     const formToJson = (form) => Object.assign(...Array.from(new FormData(form).entries(), ([x, y]) => ({[x]: y})));
@@ -16,31 +18,15 @@ function NewProcess({ submit, data}) {
     }   
 
     return ( 
-        <form onSubmit={handleSubmit}>
-            <input type="hidden" name="status" value="false"/>
-            <fieldset>
-                <label htmlFor="process-name">Nome do processo:</label>
-                <input type="text" id="process-name" name="name" placeholder="Escreva o ID do processo" required/>
-            </fieldset>
-            <fieldset>
-                <label htmlFor="process-arrived">Tempo de chegada</label>
-                <input type="number" id="process-arrived" name="arrived" placeholder="Escreva o tempo de chegada" min="0" required />
-            </fieldset>
-            <fieldset>
-                <label htmlFor="process-execution">Tempo de execução</label>
-                <input type="number" id="process-execution" name="execution" placeholder="Escreva o tempo de execução" min="1" required />
-            </fieldset>
-            <fieldset>
-                <label htmlFor="process-priority">Nível de prioridade:</label>
-                <input type="number" id="process-priority" name="priority" placeholder="Escreva o nivel de prioridade" required/>
-            </fieldset>
-            <fieldset>
-                <label htmlFor="process-color">Escolha uma cor de referencia:</label>
-                <input type="color" id="process-color" name="color" placeholder="Escolha uma cor" required/>
-            </fieldset>
-            
-            <button type="submit">Adicionar processo</button>
-        </form>
+        <FormContainer onSubmit={handleSubmit} className="max-container">
+            <InputField type="hidden" name="status" value="false" hidden/>
+            <InputField type="text" id="process-name" name="name" label="Nome do processo:" required/>
+            <InputField type="number" id="process-arrived" name="arrived"  min="0" label="Tempo de chegada" required/>
+            <InputField type="number" id="process-execution" name="execution" min="1" label="Tempo de execução" required />
+            <InputField type="number" id="process-priority" name="priority" label="Prioridade" required />
+            <InputField type="color" id="process-color" name="color" label="Cor" required />
+            <button type="submit" className="btn-default">Adicionar processo</button>
+        </FormContainer>
     );
 }
 
