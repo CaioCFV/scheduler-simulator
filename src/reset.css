@@ -174,15 +174,6 @@ input::-webkit-inner-spin-button {
     -moz-appearance: textfield;
 }
 
-span.a::before {
-    content: "";
-    width: 2px;
-    height: 45px;
-    background: #fff;
-    display: block;
-    margin-left: auto;
-}
-
 
 /* Firefox */
 

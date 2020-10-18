@@ -1,5 +1,5 @@
 import React from 'react';
-import  { Table } from './style';
+import  { Table, Status  } from './style';
 
 function ProcessTable({process = []}) {
     return ( 
@@ -25,7 +25,7 @@ function ProcessTable({process = []}) {
                             <td>{item.arrived}</td>
                             <td>{item.execution}</td>
                             <td>{item.priority}</td>
-                            <td>{item.status}</td>
+                            <Status status={item.status}>{item.status}</Status>
                             <td><i style={{background:item.color}}></i></td>
                         </tr>
                     );

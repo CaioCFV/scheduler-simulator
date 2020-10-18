@@ -33,8 +33,5 @@ function NewProcess({ submit, data}) {
     );
    
 }
-setInterval(() => {
-    document.getElementById("addprocesso").style.left=0;
-    console.log("foi")
-}, 1000);
+
 export default NewProcess;

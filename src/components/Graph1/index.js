@@ -1,18 +1,30 @@
 import React from 'react';
 import  _  from  "lodash"
+import { Square, Title, Item, Time, } from './style';
+
+
+function getPrimary(data,searched){
+    return data.filter(item=>item.id == searched.id)[0]
+} 
+function getLast(){
+
+}
 
 function Graph1({data}) {
-    const percent = data.totalExecutionTime / 100;
-
+    console.log(getPrimary(data.steps,data.process[0]));
     return ( 
       <>
-        <div style={{width:'100%',display:'flex'}}>
+        <Title>Diagrama de Gantt</Title>
+        <Square>
             {data.steps.map((item,i)=>{
-              return <div key={i} style={{flex:1,height:'40px',background:item.color,position:'relative'}}>
-                <span className="a" style={{position: 'absolute',right: 0,top: '0'}}>{i+1}</span>
-              </div>
+              return <Item key={i} background={item.color}>
+                <Time className="a">
+                  <i>{i+1}</i>
+                </Time>
+              </Item>
             })}
-        </div>
+        </Square>
+        
       </>
     );
 }

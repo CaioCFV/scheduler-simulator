@@ -32,3 +32,7 @@ export const Table = styled.table`
         margin: 0 auto;
     }
 `;
+
+export const Status = styled.td`
+    color:${props=> props.status == 'false' ? 'red' : 'green'};
+`;

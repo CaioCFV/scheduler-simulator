@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { ProcessTable, NewProcess, SetTime, Graph1}  from '../../components';
 import  _  from  "lodash";
-import { ContainerProcess } from './style';
+import { ContainerProcess, ContainerButtons, ContainerGraph } from './style';
 
 function init(data,setData){
     let clone = _.cloneDeep(data);
     clone.totalExecutionTime = 0;
+    clone.init = true;
     clone.process.map((item)=>{
-        clone.totalExecutionTime += item.execution
+        clone.totalExecutionTime += item.execution;
     });
     setData(clone)
 }
@@ -75,20 +76,14 @@ function Sjf() {
         queue:[],
         time:-1,
         steps:[],
-        totalExecutionTime: 0
+        totalExecutionTime: 0,
+        init:false
     });
-
-    useEffect(()=>{
-        console.log(data)
-    },[data])
 
     const handleIniciar =  () =>{
         init(data,setData);
+        
     }
-
-    // const handleResult = () => {
-    //     p.show()
-    // }
 
     const handleNext = () => {
         next(data,setData)
@@ -102,17 +97,14 @@ function Sjf() {
             <NewProcess submit={setData} data={data}/>
         </ContainerProcess>
 
-        
-        <hr />
-        <SetTime />
-        <hr />
-        <button onClick={handleIniciar}>Iniciar</button>
-        {/* <button onClick={handleResult}>Mostra resultado</button> */}
-        <button onClick={handleNext}>Proximo passo</button>
-        <hr />
-        <hr />  
-        <Graph1 data={data}/>
+        <ContainerButtons data-controls={data.init}>
+            <button onClick={handleIniciar} className="btn-default">Iniciar</button>
+        </ContainerButtons>
 
+        <ContainerGraph className="max-container" data-controls={data.init}>
+            <Graph1 data={data}/>
+            <button onClick={handleNext} className="btn-default">Proximo passo</button>
+        </ContainerGraph>
       </>
     );
 }
