@@ -46,6 +46,22 @@ export const Logo = styled.h1`
         position:relative;
         margin-left:150px;
     }
+    p::after{
+        content: "_";
+        animation: blink-animation 1s steps(5, start) infinite;
+        -webkit-animation: blink-animation 1s steps(5, start) infinite;
+    }
+    @keyframes blink-animation {
+        to {
+            visibility: hidden;
+        }
+    }
+    
+    @-webkit-keyframes blink-animation {
+        to {
+            visibility: hidden;
+        }
+    }
     span:before{
         content: "";
         display: block;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Square, Title, Item, Time, Table, ContainerTables } from './style';
+import { Square, Title, Item, Time, Table, ContainerTables,Info } from './style';
 
 
 function Media ({data}){
@@ -33,13 +33,29 @@ function Graph1({data}) {
 
     return (  
       <>
-        <Title>Diagrama de Gantt</Title>
+        <Title>Diagrama de Gantt</Title>                  
         <Square>
             {data.steps.map((item,i)=>{
+              
               return <Item key={i} background={item.color}>
                 <Time className="a">
                   <i>{i+1}</i>
+                  
                 </Time>
+                <Info> 
+                  <p>
+                    nome do processo:{item.name}
+                  </p>
+                  <p>
+                    tempo de execucao:{item.execution}
+                  </p>
+                  <p>
+                    tempo de chegada:{item.arrived}
+                  </p>
+                  <p>
+                    tempo round robin:{item.round_robin_time}
+                  </p>
+                </Info>
               </Item>
             })}
         </Square>
@@ -87,11 +103,13 @@ function Graph1({data}) {
                 </thead>
                 <tbody>
                   {data.process.map((item,i)=>{
+                    console.log(item)
                     return <tr key={i}>
                       <td>{item.id}</td>
                       <td>{item.name}</td>
                       <td>{item.wait - item.arrived < 0 ? 0 : item.wait - item.arrived}</td>
                       <td>{item.status === 'false' ? 0 : (item.wait - item.arrived + item.execution)}</td>
+                      
                     </tr>
                   })}
                 </tbody>
@@ -113,6 +131,7 @@ function Graph1({data}) {
         </ContainerTables>
 
       </>
+      
     );
 }
 
