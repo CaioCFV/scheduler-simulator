@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Title = styled.h2`
     font-weight:700;
     font-size:25px;
-    margin-top:50px
+    margin-top:50px;
 `;
 
 export const Square = styled.ul`
@@ -13,7 +13,6 @@ export const Square = styled.ul`
     margin:40px 0 80px;
     border-top: 2px dashed #fff;
     border-bottom: 2px dashed #fff;
-    margin-top:150px;
 `;
 
 export const Item = styled.li`
@@ -89,35 +88,37 @@ export const Table = styled.table`
         margin: 0 auto;
     }
 `;
+
 export const Info = styled.div`
-position: absolute;
-bottom:125%;
-left: 50%;
-background: white;
-border:3px dashed black;
-padding:20px;
-text-align:left;
-opacity:0;
-visibility:hidden;
-transition:0.2s;
-width:202px;
-transform: translateX(-50%);
-p{
-    color:black
-}
-&::after{
-    content: "";
     position: absolute;
-    width: 17px;
-    height: 17px;
+    bottom:125%;
+    left: 50%;
     background: white;
-    display: block;
-    transform: rotate(45deg);
-    left: 45%;
-    z-index: 0;
-    bottom: -8px;
- 
-}
+    border:3px dashed black;
+    padding:20px;
+    text-align:left;
+    opacity:0;
+    visibility:hidden;
+    transition:0.2s;
+    width:220px;
+    transform: translateX(-50%);
+    p{
+        color:black;
+        margin: 10px 0;
+    }
+    &::after{
+        content: "";
+        position: absolute;
+        width: 17px;
+        height: 17px;
+        background: white;
+        display: block;
+        transform: rotate(45deg);
+        left: 45%;
+        z-index: 0;
+        bottom: -8px;
+    
+    }
 
 
 `;

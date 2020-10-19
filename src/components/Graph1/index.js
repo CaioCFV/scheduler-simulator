@@ -43,18 +43,10 @@ function Graph1({data}) {
                   
                 </Time>
                 <Info> 
-                  <p>
-                    nome do processo:{item.name}
-                  </p>
-                  <p>
-                    tempo de execucao:{item.execution}
-                  </p>
-                  <p>
-                    tempo de chegada:{item.arrived}
-                  </p>
-                  <p>
-                    tempo round robin:{item.round_robin_time}
-                  </p>
+                  <p>ID: {item.id}</p>
+                  <p>T. execução: {item.execution}</p>
+                  <p>T. chegada: {item.arrived}</p>
+                  <p>Quantum: {item.round_robin_time}</p>
                 </Info>
               </Item>
             })}

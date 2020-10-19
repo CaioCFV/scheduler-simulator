@@ -174,7 +174,8 @@ input::-webkit-inner-spin-button {
     -moz-appearance: textfield;
 }
 
-span.a::before {
+
+/* span.a::before {
     content: "";
     width: 2px;
     height: 45px;
@@ -182,6 +183,7 @@ span.a::before {
     display: block;
     margin-left: auto;
 }
+ */
 
 
 /* Firefox */
