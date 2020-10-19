@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Table = styled.table`
     color: var(--theme-color-4);
-    width: 100%;
     margin-top:50px;
 
     h2{
@@ -34,5 +33,5 @@ export const Table = styled.table`
 `;
 
 export const Status = styled.td`
-    color:${props=> props.status == 'false' ? 'red' : 'green'};
+    color:${props=> props.status === 'false' ? 'red' : 'green'};
 `;

@@ -1,34 +1,44 @@
 import React, { useState } from 'react';
-import { ProcessTable, NewProcess, Graph1, Header}  from '../../components';
+import { ProcessTable, NewProcess, Graph1,InputField, Header}  from '../../components';
 import { ContainerProcess, ContainerButtons, ContainerGraph, Title } from '../../style-frame';
-import { schedulerSJF } from '../../scheduler';
+import { schedulerROUND_ROBIN } from '../../scheduler';
+import { useEffect } from 'react';
 
 function Main() {
-    const [data,setData] = useState(schedulerSJF.getInitial());
+    const [data,setData] = useState(schedulerROUND_ROBIN.getInitial());
 
-    const handleIniciar =  () =>{
-        schedulerSJF.init(data,setData);
+    
+    const handleIniciar =  (e) =>{
+        e.preventDefault();
+        schedulerROUND_ROBIN.init({...data,round_time:parseInt(e.target.round_time.value)},setData);
     }
 
+    useEffect(()=>{
+        console.log(data)
+    },[data]);
+
     const handleNext = () => {
-        schedulerSJF.next(data,setData);
+        schedulerROUND_ROBIN.next(data,setData);
     }
 
     const handleRestart = () =>{
-        schedulerSJF.restart(data,setData);
+        schedulerROUND_ROBIN.restart(data,setData);
     }
 
     return ( 
       <>
         <Header />
-        <Title>Shortest Job First - SJF</Title>
+        <Title>Round Robin</Title>
         <ContainerProcess  className="max-container" data-controls={data.init}>
             <ProcessTable process={data.process} />
             <NewProcess submit={setData} data={data}/>
         </ContainerProcess>
 
         <ContainerButtons data-controls={data.init}>
-            <button onClick={handleIniciar} className="btn-default">Iniciar</button>
+            <form onSubmit={handleIniciar}>
+                <InputField type="number" min="1" name="round_time" id="round_time" label="Quantum" required/>
+                <button type="submit" className="btn-default">Iniciar</button>
+            </form>
             <button onClick={handleRestart} className="btn-default">Criar novo</button>
         </ContainerButtons>
 

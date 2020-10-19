@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { ProcessTable, NewProcess, Graph1, Header}  from '../../components';
-import { ContainerProcess, ContainerButtons, ContainerGraph, Title } from '../../style-frame';
-import { schedulerSJF } from '../../scheduler';
+import { ContainerProcess, ContainerButtons, ContainerGraph, Title } from './../../style-frame';
+import { schedulerPRIORITY_PREEMPTIVE } from '../../scheduler';
 
 function Main() {
-    const [data,setData] = useState(schedulerSJF.getInitial());
+    const [data,setData] = useState(schedulerPRIORITY_PREEMPTIVE.getInitial());
 
     const handleIniciar =  () =>{
-        schedulerSJF.init(data,setData);
+        schedulerPRIORITY_PREEMPTIVE.init(data,setData);
     }
 
     const handleNext = () => {
-        schedulerSJF.next(data,setData);
+        schedulerPRIORITY_PREEMPTIVE.next(data,setData);
     }
 
     const handleRestart = () =>{
-        schedulerSJF.restart(data,setData);
+        schedulerPRIORITY_PREEMPTIVE.restart(data,setData);
     }
 
     return ( 
       <>
         <Header />
-        <Title>Shortest Job First - SJF</Title>
+        <Title>Priority - PREEMPTIVE</Title>
         <ContainerProcess  className="max-container" data-controls={data.init}>
             <ProcessTable process={data.process} />
             <NewProcess submit={setData} data={data}/>

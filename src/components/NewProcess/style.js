@@ -9,7 +9,9 @@ export const FormContainer = styled.form`
         display:block;
         font-size:30px;
     }
-    fieldset:first-child{
+    fieldset:nth-child(1),
+    fieldset:nth-child(2),
+    fieldset:nth-child(3){
         display:none;
     }
 `;
