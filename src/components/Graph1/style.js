@@ -72,7 +72,8 @@ export const Table = styled.table`
     text-align: center;
     font-size: 20px;
   }
-
+  .taga {
+  }
   th {
     font-weight: 700;
     color: var(--theme-color-4);
