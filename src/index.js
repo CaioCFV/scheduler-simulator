@@ -1,13 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './reset.css';
-import Routes from './routes';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./reset.css";
+import Routes from "./routes";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-ReactDOM.render(
+root.render(
   <React.StrictMode>
-      <Routes />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <Routes />
+  </React.StrictMode>
 );
-
-

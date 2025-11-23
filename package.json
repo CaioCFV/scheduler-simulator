@@ -8,16 +8,16 @@
     "@testing-library/user-event": "^7.2.1",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.20",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "5.0.1",
     "styled-components": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "NODE_OPTIONS='--openssl-legacy-provider' react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

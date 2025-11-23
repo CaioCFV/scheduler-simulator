@@ -7,7 +7,7 @@ function Main() {
   return (
     <Container className="max-container">
       <Logo>
-        Scheduler <p id="pcomblink">Simulator</p>
+        Escalonador <p id="pcomblink">de Processos</p>
         <span>by: Caio F. Vieira</span>
       </Logo>
       <Body>
@@ -47,7 +47,7 @@ function Main() {
           <FaGithubSquare />
         </a>
         <a
-          href="https://www.instagram.com/caiiuh/"
+          href="https://www.instagram.com/caio_f_vieira/"
           target="_blank"
           rel="noopener noreferrer"
         >
